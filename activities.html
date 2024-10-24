@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+    <script src="./ActivitiesPage/activities.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Activities in Tourist Central</h1>
+    </header>
+    <fieldset>
+        <section>
+            <div>Activity Category:</div>
+            <select name="acts" id="acts">
+                <option value="">Select an Activities</option>
+                <option value="adventures">Adventures</option>
+                <option value="arts&Crafts">Arts & Crafts</option>
+                <option value="museums">Museums</option>
+                <option value="wineTastings">Wine Tastings</option>
+                <option value="other">Other</option>
+            </select>
+            <br>
+            <br>
+            <div>Activities</div>
+            <select name="activities" id="activities"></select>
+            <br>
+            <br>
+            <div id="purchaseForm">
+                <h2>Get E-Ticket</h2>
+                <label for="numberOfTickets">Number of Tickets:</label>
+                <input type="number" id="numberOfTickets" min="1"><br><br>
+                <label for="cardNumber">Credit Card Number:</label>
+                <input type="text" id="cardNumber" required><br><br>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" required><br><br>
+                <button id="purchaseButton">Purchase</button>
+                <button id="reset">Reset</button>
+                <div id="Message">?</div>
+            </div>
+        
+            <script>
+                function onActChange(event){
+                    activities.innertext = "";
+                }
+            </script>
+        </section>
+    </fieldset>
+</body>
+</html>
