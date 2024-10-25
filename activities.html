@@ -25,7 +25,12 @@
         <br>
         <br>
         <div>Activities</div>
-        <select name="activityList" id="activityList"></select>
+        <select name="activityList" id="activityList">
+        </select>
+        <br>
+        <br>
+        <div>Activity Details:</div>
+        <div id="activityDetails"></div>
         <br>
         <br>
         <div id="purchaseForm">
@@ -40,13 +45,13 @@
             <button id="reset">Reset</button>
             <div id="Message">?</div>
         </div>
+       
 
         <script>
             //displayed activities will be based on seleced category 
             function displayActivities(categoryAct) {
                 let activityList = document.getElementById("activityList");
-                activityList.innerHTML = ""; // Clear previous activities
-
+                activityList.innerHTML = "<option value=\"\">Select One</option>"; 
                 for (let activity of activities) { //Loop through the activities array
                     if (activity.category === categoryAct) {
                         let optionElement = document.createElement("option") //created optionElement to hold activity details
@@ -56,6 +61,22 @@
                     }
                 }
             }
+
+            // display activity details
+            document.getElementById("activityList").addEventListener("change", function() {
+                let selectedActivityId = this.value; // Get the selected activity ID
+                let activityDetails = document.getElementById("activityDetails");
+                activityDetails.innerHTML = ""; // Clear previous details
+
+                // Find and display the selected activity details
+                let selectedActivity = activities.find(activity => activity.id === selectedActivityId);
+                if (selectedActivity) {
+                    activityDetails.innerHTML = `<h3>${selectedActivity.name}</h3>
+                                                 <p>Description: ${selectedActivity.description}</p>
+                                                 <p>Location: ${selectedActivity.location}</p>
+                                                 <p>Price: $${selectedActivity.price.toFixed(2)}</p>`;
+                }
+            });
 
             document.getElementById("category").addEventListener("change", function(){
                 let categoryAct = this.value; // Gets the selected value
