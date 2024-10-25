@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hike</title>
     <script src="./HikingPage/hiking.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -16,16 +18,47 @@
             </ul>
         </nav>
     </header>
-    <fieldset>
-        <div>Hike:</div>
-        <select name="hike" id="hike">
+
+    <h1>Hike on Tourist Central </h1>
+     <select name="hikeSelect" id="hikeSelect">
             <option value="">Select one</option>
-            <option value="Birding Loop">Birding Loop</option>
-            <option value="Deep Blue Pool Trail">Deep Blue Pool Trail</option>
-            <option value="Museums">Museums</option>
-        </select>        
-  
-        <script></script>
-    </fieldset>
+    </select>
+        <div id="hikeDetail"></div>
+    </div>
+    <script>
+        function getHikeDetail(hike) {
+            const path = "./HikingPage/";
+            return `
+            <pre>
+                id:             ${hike.id} 
+                name:           ${hike.name} 
+                
+                length:         ${hike.length} 
+                difficulty:     ${hike.difficulty} 
+            </pre>
+            <p>${hike.description}</p>
+                <div class="hikeImage">Scenic Image:   <br> <img src="${path + hike.scenicImage}"> </div>
+                <div class="hikeImage">Trail Map Image: <br> <img src="${path + hike.trailMapImage}"> </div>
+                `;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            for (h of hikes) {
+                hikeSelect.appendChild(new Option(h.name));
+            }
+
+            hikeSelect.addEventListener("change", () => {
+                for (hike of hikes) {
+                    if (hikeSelect.value === hike.name) {
+                        hikeDetail.innerHTML = getHikeDetail(hike);
+                    }
+                }
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>
