@@ -24,20 +24,20 @@ let activities = [
 // console.log(first.category === categories[0])
 // console.log(activities[3].category === categories[0])
 // console.log(first["name"])
-let selected = categories[3]
-console.log(selected)
-for (let a of activities){
-    if(selected === a.category){
-        console.log(a.name)
-    }
-}
-let selectedActivity = activities[7]
+// let selected = categories[3]
+// console.log(selected)
+// for (let a of activities){
+//     if(selected === a.category){
+//         console.log(a.name)
+//     }
+// }
+// let selectedActivity = activities[7]
 // console.log(` 
 //     id ${selectedActivity.id}
 //     description ${selectedActivity.description}
 //     `);
 
-for (let p in selectedActivity){
-    let v = selectedActivity[p]
-    console.log(p, v)
-}
+// for (let p in selectedActivity){
+//     let v = selectedActivity[p]
+//     console.log(p, v)
+// }
